@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="mdblog.rs">
+  <link rel="icon" href="https://fugangqiang.github.io/mdblog.rs/static/favicon.png">
+  <link rel="stylesheet" href="https://fugangqiang.github.io/mdblog.rs/static/main.css">
+  <style>
+    .katex      { font-size: 1em !important; }
+  </style>
+
+  <title>how to create a new blog project</title>
+</head>
+<body>
+<header class="clearfix">
+  <section id="imglogo">
+    <a href="https://fugangqiang.github.io/mdblog.rs/index.html" title="Mdblog Demo Site">
+    <img src="https://fugangqiang.github.io/mdblog.rs/static/logo.png"></a>
+  </section>
+  <section id="textlogo">
+    <h1 id="site-name">
+      <a href="https://fugangqiang.github.io/mdblog.rs/index.html" title="Mdblog Demo Site">Mdblog Demo Site</a>
+    </h1>
+    <h2 id="site-motto">Simple is Beautiful!</h2>
+  </section>
+  <nav>
+    <ul>
+      <li><a href="https://fugangqiang.github.io/mdblog.rs/index.html">Blog</a></li>
+    </ul>
+  </nav>
+</header>
+<div id="container" class="clearfix">
+  <main>
+    <h1>how to create a new blog project</h1>
+    <article>
+      <p>when you installed <a href="https://crates.io/crates/mdblog"><code>mdblog</code></a>,
+you can use its subcommand <code>init</code> to initialize a new blog project.</p>
+<h2>init blog project</h2>
+<pre><code>mdblog init myblog
+</code></pre>
+<p>this command will create a new directory named <code>myblog</code> in the current directory,
+and initialize its directory layout as:</p>
+<pre><code>myblog
+├── config.toml
+├── media/
+├── posts/
+└── _themes/
+</code></pre>
+<ul>
+<li><code>config.toml</code>: blog project config file</li>
+<li><code>media</code>:  blog project media directory</li>
+<li><code>posts</code>: blog project markdown posts directory</li>
+<li><code>_themes</code>: blog project themes directory</li>
+</ul>
+<h2>run subcommand</h2>
+<p>every mdblog subcommand except <code>init</code> should be run in the top blog project directory.</p>
+<pre><code>cd myblog
+# mdblog subcommand
+</code></pre>
+<p><code>config.toml</code> must be existed in the top blog project directory.</p>
+<h2>check blog project</h2>
+<p>now you can run <code>serve</code> command in the blog project directory
+to check the web pages:</p>
+<pre><code>mdblog serve
+</code></pre>
+<p>the web browser will be automatic opened at the blog index page.</p>
+
+      <ul id="article_footer">
+        <li>tags: <a href="https://fugangqiang.github.io/mdblog.rs/tags/tutorial.html">tutorial<sup>2</sup></a></li>
+      <li>date: 2018-04-22 12:31:00</li>
+      </ul>
+    </article>
+  </main>
+  <aside>
+    <section class="tags clearfix">
+      <h1>Tags</h1>
+      <ul>
+        <li><a href="https://fugangqiang.github.io/mdblog.rs/tags/hello.html">hello<sup>2</sup></a></li>
+        <li><a href="https://fugangqiang.github.io/mdblog.rs/tags/introduce.html">introduce<sup>1</sup></a></li>
+        <li><a href="https://fugangqiang.github.io/mdblog.rs/tags/math.html">math<sup>1</sup></a></li>
+        <li><a href="https://fugangqiang.github.io/mdblog.rs/tags/tutorial.html">tutorial<sup>2</sup></a></li>
+      </ul>
+    </section>
+    <section class="links clearfix">
+      <h1>Links</h1>
+      <ul>
+        <li><a href="https://fugangqiang.github.io/mdblog.rs/index.html" target="_blank">Blog</a></li>
+      </ul>
+    </section>
+    <div>
+      <a href="https://fugangqiang.github.io/mdblog.rs/atom.xml" target="_blank">
+        <img id="feed" src="https://fugangqiang.github.io/mdblog.rs/static/feed.png">
+      </a>
+    </div>
+  </aside>
+</div>
+<footer>
+  <p>
+    Keep It Simple, Stupid!
+  </p>
+</footer>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.js"></script>
+<script>
+  "use strict";
+  document.addEventListener("DOMContentLoaded", function () {
+      var maths = document.getElementsByClassName("language-math");
+      for (var i=0; i<maths.length; i++) {
+          var el = maths[i];
+          katex.render(el.innerText, el, {displayMode: true});
+      }
+      var codes = document.getElementsByTagName("code");
+      for (i=0; i<codes.length; i++) {
+          el = codes[i];
+          if (el.classList.contains("language-math")) continue;
+          if (el.classList.contains("language-inline-math")) {
+              katex.render(el.innerText, el);
+              continue;
+          }
+          var parent = el.parentNode;
+          if (parent.nodeName.toLowerCase() === "pre") continue;
+          // TODO: Can this be done with DOM manipulation rather than string manipulation?
+          // https://stackoverflow.com/q/48438067/3019990
+          var inlineMath = "$" + el.outerHTML + "$";
+          if (parent.innerHTML.indexOf(inlineMath) !== -1) {
+              el.classList.add("language-inline-math");
+              parent.innerHTML = parent.innerHTML.replace("$" + el.outerHTML + "$", el.outerHTML);
+              i--;
+          }
+      }
+  });
+</script>
+</body>
+</html>

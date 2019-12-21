@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="mdblog.rs">
+  <link rel="icon" href="https://fugangqiang.github.io/mdblog.rs/static/favicon.png">
+  <link rel="stylesheet" href="https://fugangqiang.github.io/mdblog.rs/static/main.css">
+  <style>
+    .katex      { font-size: 1em !important; }
+  </style>
+
+  <title>introduction to mdblog</title>
+</head>
+<body>
+<header class="clearfix">
+  <section id="imglogo">
+    <a href="https://fugangqiang.github.io/mdblog.rs/index.html" title="Mdblog Demo Site">
+    <img src="https://fugangqiang.github.io/mdblog.rs/static/logo.png"></a>
+  </section>
+  <section id="textlogo">
+    <h1 id="site-name">
+      <a href="https://fugangqiang.github.io/mdblog.rs/index.html" title="Mdblog Demo Site">Mdblog Demo Site</a>
+    </h1>
+    <h2 id="site-motto">Simple is Beautiful!</h2>
+  </section>
+  <nav>
+    <ul>
+      <li><a href="https://fugangqiang.github.io/mdblog.rs/index.html">Blog</a></li>
+    </ul>
+  </nav>
+</header>
+<div id="container" class="clearfix">
+  <main>
+    <h1>introduction to mdblog</h1>
+    <article>
+      <h1>Mdblog</h1>
+<p><code>mdblog</code> is a static site generator from markdown files with features:</p>
+<ul>
+<li>TeX style math support</li>
+<li>file path is the post url</li>
+<li>file name is the post title</li>
+<li>post can be hidden(link does not be insert into index/tag page)</li>
+</ul>
+<h1>Install</h1>
+<p><code>mdblog</code> is implemented by rust language, so you need cargo command:</p>
+<pre><code>cargo install mdblog
+</code></pre>
+<p><code>mdblog</code> will be installed in your cargo binary directory(<code>~/.cargo/bin/</code>).</p>
+<h1>CLI</h1>
+<p><code>mdblog</code> can be use as a command:</p>
+<pre><code>$ mdblog -h
+static site generator from markdown files
+
+USAGE:
+    mdblog &lt;SUBCOMMAND&gt;
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+SUBCOMMANDS:
+    build    Build the blog static files
+    help     Prints this message or the help of the given subcommand(s)
+    init     Initialize the blog directory layout
+    new      Create a blog post
+    serve    Serve the blog, rebuild on change
+    theme    Blog theme operations
+</code></pre>
+<p>you can also check the subcommand usage:</p>
+<pre><code>$ mdblog serve -h
+Serve the blog, rebuild on change
+
+USAGE:
+    mdblog serve [OPTIONS]
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+OPTIONS:
+    -p, --port &lt;port&gt;    Serve the blog at http://127.0.0.1:&lt;port&gt; [default: 5000]
+</code></pre>
+<h3>init blog</h3>
+<pre><code>$ mdblog init myblog
+</code></pre>
+<p>blog directory(<code>myblog</code>) layout is initialized:</p>
+<pre><code>myblog
+├── config.toml
+├── media
+├── posts
+│   ├── hello.md
+│   └── math.md
+└── _themes
+</code></pre>
+<ul>
+<li><code>config.toml</code>: blog config file</li>
+<li><code>media</code>: blog media directory</li>
+<li><code>posts</code>: blog posts directory</li>
+<li><code>posts/hello.md</code>: a markdown style post</li>
+<li><code>_themes</code>: blog themes directory</li>
+</ul>
+<h3>build blog</h3>
+<pre><code>$ cd myblog
+$ mdblog build
+</code></pre>
+<p>the blog static files are build into the subdir <code>_build</code>, the current blog directory(<code>myblog</code>) layout is:</p>
+<pre><code>myblog
+├── config.toml
+├── media
+├── posts
+│   ├── hello.md
+│   └── math.md
+├── _themes
+└── _builds
+</code></pre>
+<ul>
+<li><code>_builds</code>: generated static-site top directory</li>
+</ul>
+<h3>serve blog</h3>
+<pre><code>$ mdblog serve
+</code></pre>
+<p>open the site index page automatically,
+and re-generate your static-site when you add or change content,</p>
+<h3>new post</h3>
+<p>create a new post titled <code>another</code>:</p>
+<pre><code>$ mdblog new another
+</code></pre>
+<p>a new markdown file <code>posts/another.md</code> is created,
+you can edit it for the new post.</p>
+<p>refresh the index page, you will find the new post.</p>
+<h1>config.toml</h1>
+<pre><code class="language-toml">site_url = &quot;&quot;
+site_name = &quot;Mdblog&quot;
+site_motto = &quot;Simple is Beautiful!&quot;
+footer_note = &quot;Keep It Simple, Stupid!&quot;
+media_dir = &quot;media&quot;
+build_dir = &quot;_build&quot;
+theme = &quot;simple&quot;
+theme_root_dir = &quot;_themes&quot;
+rebuild_interval = 2
+posts_per_page = 20
+</code></pre>
+
+      <ul id="article_footer">
+        <li>tags: <a href="https://fugangqiang.github.io/mdblog.rs/tags/introduce.html">introduce<sup>1</sup></a></li>
+      <li>date: 2018-03-28 23:48:56</li>
+      </ul>
+    </article>
+  </main>
+  <aside>
+    <section class="tags clearfix">
+      <h1>Tags</h1>
+      <ul>
+        <li><a href="https://fugangqiang.github.io/mdblog.rs/tags/hello.html">hello<sup>2</sup></a></li>
+        <li><a href="https://fugangqiang.github.io/mdblog.rs/tags/introduce.html">introduce<sup>1</sup></a></li>
+        <li><a href="https://fugangqiang.github.io/mdblog.rs/tags/math.html">math<sup>1</sup></a></li>
+        <li><a href="https://fugangqiang.github.io/mdblog.rs/tags/tutorial.html">tutorial<sup>2</sup></a></li>
+      </ul>
+    </section>
+    <section class="links clearfix">
+      <h1>Links</h1>
+      <ul>
+        <li><a href="https://fugangqiang.github.io/mdblog.rs/index.html" target="_blank">Blog</a></li>
+      </ul>
+    </section>
+    <div>
+      <a href="https://fugangqiang.github.io/mdblog.rs/atom.xml" target="_blank">
+        <img id="feed" src="https://fugangqiang.github.io/mdblog.rs/static/feed.png">
+      </a>
+    </div>
+  </aside>
+</div>
+<footer>
+  <p>
+    Keep It Simple, Stupid!
+  </p>
+</footer>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.js"></script>
+<script>
+  "use strict";
+  document.addEventListener("DOMContentLoaded", function () {
+      var maths = document.getElementsByClassName("language-math");
+      for (var i=0; i<maths.length; i++) {
+          var el = maths[i];
+          katex.render(el.innerText, el, {displayMode: true});
+      }
+      var codes = document.getElementsByTagName("code");
+      for (i=0; i<codes.length; i++) {
+          el = codes[i];
+          if (el.classList.contains("language-math")) continue;
+          if (el.classList.contains("language-inline-math")) {
+              katex.render(el.innerText, el);
+              continue;
+          }
+          var parent = el.parentNode;
+          if (parent.nodeName.toLowerCase() === "pre") continue;
+          // TODO: Can this be done with DOM manipulation rather than string manipulation?
+          // https://stackoverflow.com/q/48438067/3019990
+          var inlineMath = "$" + el.outerHTML + "$";
+          if (parent.innerHTML.indexOf(inlineMath) !== -1) {
+              el.classList.add("language-inline-math");
+              parent.innerHTML = parent.innerHTML.replace("$" + el.outerHTML + "$", el.outerHTML);
+              i--;
+          }
+      }
+  });
+</script>
+</body>
+</html>

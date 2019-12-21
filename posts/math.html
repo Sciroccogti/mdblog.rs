@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="mdblog.rs">
+  <link rel="icon" href="https://fugangqiang.github.io/mdblog.rs/static/favicon.png">
+  <link rel="stylesheet" href="https://fugangqiang.github.io/mdblog.rs/static/main.css">
+  <style>
+    .katex      { font-size: 1em !important; }
+  </style>
+
+  <title>math</title>
+</head>
+<body>
+<header class="clearfix">
+  <section id="imglogo">
+    <a href="https://fugangqiang.github.io/mdblog.rs/index.html" title="Mdblog Demo Site">
+    <img src="https://fugangqiang.github.io/mdblog.rs/static/logo.png"></a>
+  </section>
+  <section id="textlogo">
+    <h1 id="site-name">
+      <a href="https://fugangqiang.github.io/mdblog.rs/index.html" title="Mdblog Demo Site">Mdblog Demo Site</a>
+    </h1>
+    <h2 id="site-motto">Simple is Beautiful!</h2>
+  </section>
+  <nav>
+    <ul>
+      <li><a href="https://fugangqiang.github.io/mdblog.rs/index.html">Blog</a></li>
+    </ul>
+  </nav>
+</header>
+<div id="container" class="clearfix">
+  <main>
+    <h1>math</h1>
+    <article>
+      <p>This is a beautiful math test.</p>
+<h2>inline style</h2>
+<p>Einstein produced $<code>E = mc^2</code>$ from his special relativity equations.</p>
+<h2>display style</h2>
+<p>The quadratic formula for the roots of the general quadratic equation:</p>
+<pre><code class="language-math">x = \frac{-b \pm \sqrt{b^2 - 4ac}}{ 2a }
+</code></pre>
+<p>matrices:</p>
+<pre><code class="language-math">\begin{bmatrix}
+   a_{11} &amp; a_{12} &amp; a_{13} \\
+   a_{21} &amp; a_{22} &amp; a_{23} \\
+   a_{31} &amp; a_{32} &amp; a_{33} \\
+\end{bmatrix}
+\begin{bmatrix}
+   x_1 \\
+   x_2 \\
+   x_3 \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+   b_1 \\
+   b_2 \\
+   b_3 \\
+\end{bmatrix}
+</code></pre>
+
+      <ul id="article_footer">
+        <li>tags: <a href="https://fugangqiang.github.io/mdblog.rs/tags/hello.html">hello<sup>2</sup></a><a href="https://fugangqiang.github.io/mdblog.rs/tags/math.html">math<sup>1</sup></a></li>
+      <li>date: 2000-01-01 00:00:00</li>
+      </ul>
+    </article>
+  </main>
+  <aside>
+    <section class="tags clearfix">
+      <h1>Tags</h1>
+      <ul>
+        <li><a href="https://fugangqiang.github.io/mdblog.rs/tags/hello.html">hello<sup>2</sup></a></li>
+        <li><a href="https://fugangqiang.github.io/mdblog.rs/tags/introduce.html">introduce<sup>1</sup></a></li>
+        <li><a href="https://fugangqiang.github.io/mdblog.rs/tags/math.html">math<sup>1</sup></a></li>
+        <li><a href="https://fugangqiang.github.io/mdblog.rs/tags/tutorial.html">tutorial<sup>2</sup></a></li>
+      </ul>
+    </section>
+    <section class="links clearfix">
+      <h1>Links</h1>
+      <ul>
+        <li><a href="https://fugangqiang.github.io/mdblog.rs/index.html" target="_blank">Blog</a></li>
+      </ul>
+    </section>
+    <div>
+      <a href="https://fugangqiang.github.io/mdblog.rs/atom.xml" target="_blank">
+        <img id="feed" src="https://fugangqiang.github.io/mdblog.rs/static/feed.png">
+      </a>
+    </div>
+  </aside>
+</div>
+<footer>
+  <p>
+    Keep It Simple, Stupid!
+  </p>
+</footer>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.js"></script>
+<script>
+  "use strict";
+  document.addEventListener("DOMContentLoaded", function () {
+      var maths = document.getElementsByClassName("language-math");
+      for (var i=0; i<maths.length; i++) {
+          var el = maths[i];
+          katex.render(el.innerText, el, {displayMode: true});
+      }
+      var codes = document.getElementsByTagName("code");
+      for (i=0; i<codes.length; i++) {
+          el = codes[i];
+          if (el.classList.contains("language-math")) continue;
+          if (el.classList.contains("language-inline-math")) {
+              katex.render(el.innerText, el);
+              continue;
+          }
+          var parent = el.parentNode;
+          if (parent.nodeName.toLowerCase() === "pre") continue;
+          // TODO: Can this be done with DOM manipulation rather than string manipulation?
+          // https://stackoverflow.com/q/48438067/3019990
+          var inlineMath = "$" + el.outerHTML + "$";
+          if (parent.innerHTML.indexOf(inlineMath) !== -1) {
+              el.classList.add("language-inline-math");
+              parent.innerHTML = parent.innerHTML.replace("$" + el.outerHTML + "$", el.outerHTML);
+              i--;
+          }
+      }
+  });
+</script>
+</body>
+</html>
