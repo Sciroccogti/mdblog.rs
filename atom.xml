@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://fugangqiang.github.io/mdblog.rs</id>
   <title>Mdblog Demo Site</title>
-  <updated>2019-12-21T13:16:20+08:00</updated>
+  <updated>2020-05-28T12:59:18+08:00</updated>
   <subtitle>Simple is Beautiful!</subtitle>
   <icon>/static/favicon.png</icon>
   <logo>/static/logo.png</logo>
@@ -57,6 +57,7 @@ tags: [test]
 <li><code>tags</code>: the post blog tags</li>
 <li><code>description</code>: the post description</li>
 <li><code>hidden</code>: the hidden flag</li>
+<li><code>title</code>: the blog title, use the file name if empty</li>
 </ul>
 <h3>body part</h3>
 <p>the blog post content is converted by <code>mdblog</code> using body part,
